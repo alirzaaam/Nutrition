@@ -1,0 +1,47 @@
+{% extends "diet_app/layout.html" %}
+
+{% block main %}
+<h1>Welcome to Diet Plan Robo Website</h1>
+
+<form action="/" method="post">
+    {% csrf_token %}
+    <input type="text" name="gender_input" id="" placeholder="Gender">
+    <input type="text" name="age_input" id="" placeholder="Age">
+    <input type="text" name="height_input" id="" placeholder="Height (Cm)">
+    <input type="text" name="weight_input" id="" placeholder="Weight (Kg)">
+    <div>
+    <label for="activities">Choose Your Activity Level:</label>
+    <select name="activity" id="activities">
+    <option value="sedentary (very little or no exercise)">Sedentary (very little or no exercise)</option>
+    <option value="lightly active (exercise 1–3 times per week)">Lightly active (Light exercise or physical activity 1–3 days per week)</option>
+    <option value="active (moderate to intense exercise 4–6 times per week)">Active (Moderate to intense exercise most days or a physically demanding job)</option>
+    </select>
+    </div>
+    <div>
+    <label for="goals">Choose Your Goal:</label>
+    <select name="goal" id="goals">
+    <option value="mild (aim to lose ~0.25–0.5 kg per week)">Mild (Slow and steady weight loss (~0.25–0.5 kg per week))</option>
+    <option value="moderate (aim to lose ~0.5–1 kg per week)">Moderate (Balanced weight loss (~0.5–1 kg per week))</option>
+    <option value="aggressive (aim to lose ~1–1.5 kg per week, but still safe)">Aggressive (Faster weight loss (~1–1.5 kg per week) but safe)</option>
+    </select>
+    </div>
+    <div>
+    <label for="preferences">Choose Your Preferences:</label>
+    <select name="preference" id="preferences">
+    <option value="">None</option>
+    <option value="vegan">Vegan</option>
+    <option value="vegetarian">Vegetarian</option>
+    <option value="keto">Keto</option>
+    <option value="paleo">Paleo</option>
+    <option value="gluten-free">Gluten-free</option>
+    </select>
+    </div>
+    <input type="submit" value="Enter">
+</form>
+
+{% if data %}
+<h2>Your Diet Plan</h2>
+
+<p>{{data}}</p>
+{% endif %}
+{% endblock %}
